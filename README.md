@@ -19,12 +19,12 @@
 
 # The Table of Contents
 - [:clap: How to run](#clap-how-to-run)
-  - [:one: Dependencies and installation](#one-Dependencies-and-installation)
+  - [:one: Dependencies and installation](#one-dependencies-and-installation)
   - [:two: Prepare Dataset](#two-prepare-dataset)
-  - [:three: Checkpoints Downloading](#three-Checkpoints-Downloading)
-  - [:four: Test and visualization](#four-Test)
+  - [:three: Checkpoints Downloading](#three-checkpoints-downloading)
+  - [:four: Test and visualization](#four-test-and-visualization)
   - [:five: Train](#five-train)
-  - [:six: Evaluate](#five-Evaluate)
+  - [:six: Evaluate](#six-evaluate)
 - [:fire: Citation](#fire-citation)
 - [:sparkles: Acknowledgement](#sparkles-acknowledgement)
 - [:heart: Contact](#heart-contact)
@@ -58,37 +58,28 @@ KITTI_location dataset from https://github.com/YujiaoShi/HighlyAccurate
 ```
 ## :three: Checkpoints Downloading
 Checkpoints can be found from [this url](http://pan.njust.edu.cn/#/link/zgGzHgpgIuoBBFGIv22v).
-<!-- ## Training
-```bash
-# KITTI
-python main.py --base configs/Boost_Sat2Den/KITTI_geo_ldm_txt_control.yaml --devices 0, --strategy ddp 
-# CVUSA
-python main.py --base configs/Boost_Sat2Den/CVUSA_geo_ldm.yaml --devices 0, --strategy ddp
-# VIGOR
-python main.py --base configs/Boost_Sat2Den/VIGOR_geo_ldm_txt_control.yaml --devices 0, --strategy ddp
-``` -->
-
-<!-- Train Homography Adjustment
-```bash
-# KITTI
-python train_corr_sig.py --base configs/Boost_Sat2Den/KITTI_geo_ldm_txt_control.yaml --devices 0, --strategy ddp --test result/2024-09-26T12-32-20_KITTI_geo_ldm_txt_control/checkpoints/epoch.ckpt
-# CVUSA
-python train_corr_sig.py --base configs/Boost_Sat2Den/CVUSA_geo_ldm.yaml --devices 0, --strategy ddp --test result/2024-09-09T12-37-15_CVUSA_geo_ldm_txt_control/checkpoints/epoch.ckpt
-# VIGOR
-python train_corr_sig.py --base configs/Boost_Sat2Den/VIGOR_geo_ldm_txt_control.yaml --devices 0, --strategy ddp --test result/2024-09-28T06-46-10_VIGOR_geo_ldm_txt_control/checkpoints/epoch.ckpt
-``` -->
 
 ## :four: Test and visualization
 ```bash
 # VIGOR
-python visualization.py --base configs/Boost_Sat2Den/VIGOR_geo_ldm_txt_control.yaml --devices 0, --strategy ddp --test result/VIGOR_ckpt/checkpoints/VIGOR.ckpt
+python visualization.py --base configs/Boost_Sat2Den/VIGOR_geo_ldm.yaml --devices 0, --strategy ddp --test result/VIGOR_ckpt/checkpoints/VIGOR.ckpt --function 1
 # CVUSA
-python visualization.py --base configs/Boost_Sat2Den/CVUSA_geo_ldm.yaml --devices 0, --strategy ddp --test result/CVUSA_ckpt/checkpoints/CVUSA.ckpt
+python visualization.py --base configs/Boost_Sat2Den/CVUSA_geo_ldm.yaml --devices 0, --strategy ddp --test result/CVUSA_ckpt/checkpoints/CVUSA.ckpt --function 1
 # KITTI
-python visualization.py --base configs/Boost_Sat2Den/KITTI_geo_ldm_txt_control.yaml --devices 0, --strategy ddp --test result/KITTI_ckpt/checkpoints/KITTI.ckpt
+python visualization.py --base configs/Boost_Sat2Den/KITTI_geo_ldm.yaml --devices 0, --strategy ddp --test result/KITTI_ckpt/checkpoints/KITTI.ckpt --function 1
 ``` 
 
-# :five: Evaluate
+# :five: Train
+```bash
+# KITTI
+python main.py --base configs/Boost_Sat2Den/train/KITTI_geo_ldm.yaml --devices 0, --strategy ddp 
+# CVUSA
+python main.py --base configs/Boost_Sat2Den/train/CVUSA_geo_ldm.yaml --devices 0, --strategy ddp
+# VIGOR
+python main.py --base configs/Boost_Sat2Den/train/VIGOR_geo_ldm.yaml --devices 0, --strategy ddp
+```
+
+# :six: Evaluate
 
 # :fire: Citation
 If our work is useful for your research, please consider citing:
